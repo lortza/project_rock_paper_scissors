@@ -20,8 +20,7 @@ class RPS
 
   def request_player_count
     puts "How many players? 1 or 2?"
-    response = gets.chomp
-    verify_response(response, ['1', '2'])
+    ensure_valid_response(['1', '2'])
   end
 
   def determine_type_of_game(player_count)

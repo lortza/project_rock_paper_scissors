@@ -40,8 +40,7 @@ class Game
   def request_player_choice
     puts "Please select a weapon by entering #{stringify_weapon_options}:"
     display_weapon_menu
-    response = gets.chomp.downcase
-    verify_response(response, WEAPONS)
+    ensure_valid_response(WEAPONS)
   end
 
   def determine_round_winner(player1_weapon, player2_weapon)
