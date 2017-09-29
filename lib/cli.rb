@@ -1,19 +1,22 @@
-module Cli
+module CLI
 
   EXIT_COMMANDS = ['q', 'quit', 'exit']
 
-  def verify_response(response, acceptable_responses)
+  def ensure_valid_response(acceptable_responses)
+    response = get_response
+
     if acceptable_responses.include?(response)
       return response
     elsif EXIT_COMMANDS.include?(response)
       exit_game
     else
-      while !acceptable_responses.include?(response)
-        puts "Sorry, '#{response}' is not a valid answer. Try again."
-        response = gets.chomp.downcase
-      end
+      puts "Sorry, '#{response}' is not a valid answer. Try again."
+      ensure_valid_response(acceptable_responses)
     end
-    response
+  end
+
+  def get_response
+    gets.chomp.downcase
   end
 
   def exit_game
