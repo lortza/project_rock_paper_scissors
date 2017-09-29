@@ -2,8 +2,8 @@ require_relative 'ascii_art'
 require_relative 'cli'
 require_relative 'game'
 
-class Rps
-  include Cli
+class RPS
+  include CLI
 
   attr_accessor :play_game
 
@@ -46,7 +46,7 @@ class Rps
   end
 end
 
-rps = Rps.new
+rps = RPS.new
 while rps.play_game
   rps.welcome_player
   game_type = rps.determine_type_of_game(rps.request_player_count)

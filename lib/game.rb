@@ -2,7 +2,7 @@ require_relative 'cli'
 require_relative 'weapons'
 
 class Game
-  include Cli
+  include CLI
   include Weapons
 
   attr_accessor :player1_score, :player2_score, :round_winner, :game_winner, :round_number
