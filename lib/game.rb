@@ -1,7 +1,9 @@
 require_relative 'cli'
+require_relative 'weapons'
 
 class Game
   include Cli
+  include Weapons
 
   attr_accessor :player1_score, :player2_score, :round_winner, :game_winner, :round_number
 
@@ -23,10 +25,9 @@ class Game
 
   private
 
-  WEAPONS = ['r', 'p', 's']
 
   def computer_makes_choice
-    WEAPONS.sample
+    weapon_keys.sample
   end
 
   def announce_round
@@ -37,10 +38,8 @@ class Game
   end
 
   def request_player_choice
-    puts "Please select a weapon by entering 'r', 'p', or 's':"
-    puts "r: Rock"
-    puts "p: Paper"
-    puts "s: Scissors"
+    puts "Please select a weapon by entering #{stringify_weapon_options}:"
+    display_weapon_menu
     response = gets.chomp.downcase
     verify_response(response, WEAPONS)
   end

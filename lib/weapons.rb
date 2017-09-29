@@ -20,4 +20,3 @@ module Weapons
   end
 
 end
-
