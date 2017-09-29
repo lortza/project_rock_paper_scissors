@@ -10,9 +10,9 @@ class Game
   def initialize
     @player1_score = 0
     @player2_score = 0
+    @round_number = 1
     @round_winner = ''
     @game_winner = ''
-    @round_number = 1
   end
 
   def play_one_player
