@@ -17,19 +17,7 @@ class Game
     @game_winner = ''
   end
 
-  def play_one_player
-    play("The Computer", Proc.new { computer_makes_choice(response_options(WEAPONS_LIB)) })
-  end
-
-  def play_two_player
-    play("Player 2", Proc.new { request_player_choice })
-  end
-
   private
-
-  def computer_makes_choice(weapons)
-    weapons.sample
-  end
 
   def announce_round
     puts '','-' * 15
@@ -94,5 +82,21 @@ class Game
     announce_winner(player2_name, @game_winner, 'game')
   end
 
+end
+
+class OnePlayer < Game
+  def play_game
+    play("The Computer", Proc.new { computer_makes_choice(response_options(WEAPONS_LIB)) })
+  end
+
+  def computer_makes_choice(weapons)
+    weapons.sample
+  end
+end
+
+class TwoPlayer < Game
+  def play_game
+    play("Player 2", Proc.new { request_player_choice })
+  end
 end
 
