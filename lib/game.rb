@@ -32,12 +32,12 @@ class Game
     ensure_valid_response(WEAPONS_LIB)
   end
 
-  def determine_round_winner(player1_weapon, player2_weapon)
-    @round_winner = RoundWinner.new(WEAPONS_SCORE).call(player1_weapon, player2_weapon)
-  end
-
-  def determine_game_winner
-    @game_winner = GameWinner.new.call(@player1_score, @player2_score)
+  def determine_winner(player1_arg, player2_arg, session_type)
+    if session_type == 'round'
+      @round_winner = RoundWinner.new(WEAPONS_SCORE).call(player1_arg, player2_arg)
+    else
+      @game_winner = GameWinner.new.call(player1_arg,player2_arg)
+    end
   end
 
   def announce_winner(player2_name, winner, session_type)
@@ -74,11 +74,11 @@ class Game
       puts "","#{player2_name}'s Turn:"
       player2_choice = weapon_selection_proc.call
       puts "#{player2_name} chose: #{player2_choice}"
-      determine_round_winner(player1_choice, player2_choice)
+      determine_winner(player1_choice, player2_choice, 'round')
       award_points
       announce_winner(player2_name, @round_winner, 'round')
     end
-    determine_game_winner
+    determine_winner(@player1_score, @player2_score, 'game')
     announce_winner(player2_name, @game_winner, 'game')
   end
 
