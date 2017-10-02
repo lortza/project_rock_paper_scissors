@@ -63,6 +63,7 @@ describe Game do
   end
 
   describe '#determine_round_winner' do
+    it 'needs to be rewritten with mocks'
     context 'when players 1 & 2 have the same weapon' do
       it "the round is a 'tie'" do
         expect(game.send(:determine_round_winner, 1, 1)).to eq('tie')
