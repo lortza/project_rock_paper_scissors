@@ -52,4 +52,18 @@ describe CLI do
 
   end
 
+  describe 'stringify_response_options' do
+    it 'outputs the weapon options like a sentence' do
+      lib = {'a' => 'A', 'b'=> 'B', 'c'=> 'C'}
+      expect(stringify_response_options(lib)).to eq("a, b, or c")
+    end
+  end
+
+  describe 'response_options' do
+    it 'returns the single letter options for all responses' do
+      lib = {'a' => 'A', 'b'=> 'B', 'c'=> 'C'}
+      expect(response_options(lib)).to eq(['a', 'b', 'c'])
+    end
+  end
+
 end

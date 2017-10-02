@@ -1,9 +1,13 @@
 require_relative 'cli'
-require_relative 'weapons'
 
 class Game
   include CLI
-  include Weapons
+
+  WEAPONS = {
+    "r" => "Rock",
+    "p" => "Paper",
+    "s" => "Scissors"
+  }
 
   attr_accessor :player1_score, :player2_score, :round_winner, :game_winner, :round_number
 
@@ -16,7 +20,7 @@ class Game
   end
 
   def play_one_player
-    play("The Computer", Proc.new {computer_makes_choice})
+    play("The Computer", Proc.new { computer_makes_choice(response_options(WEAPONS)) })
   end
 
   def play_two_player
@@ -26,8 +30,8 @@ class Game
   private
 
 
-  def computer_makes_choice
-    weapon_keys.sample
+  def computer_makes_choice(weapons)
+    weapons.sample
   end
 
   def announce_round
@@ -38,8 +42,8 @@ class Game
   end
 
   def request_player_choice
-    puts "Please select a weapon by entering #{stringify_weapon_options}:"
-    display_weapon_menu
+    puts "Please select a weapon by entering #{stringify_response_options(WEAPONS)}:"
+    display_options_menu(WEAPONS)
     ensure_valid_response(WEAPONS)
   end
 

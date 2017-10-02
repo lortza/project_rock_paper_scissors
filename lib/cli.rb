@@ -19,6 +19,20 @@ module CLI
     gets.chomp.downcase
   end
 
+  def stringify_response_options(options_lib)
+    output = options_lib.keys[0..-2].join(", ") + ", or #{options_lib.keys[-1]}"
+  end
+
+  def response_options(options_lib)
+    options_lib.keys
+  end
+
+  def display_options_menu(options_lib)
+    options_lib.each do |k, v|
+      puts "#{k}: #{v}"
+    end
+  end
+
   def exit_game
     puts "Okay Bye."
     exit
