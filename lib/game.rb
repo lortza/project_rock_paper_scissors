@@ -48,19 +48,19 @@ class Game
     @round_winner = RoundWinner.new(WEAPONS_SCORE).call(player1_weapon, player2_weapon)
   end
 
-  def announce_round_winner(player2_name)
-    if @round_winner == 'tie'
-      puts "This round was a tie."
-    elsif @round_winner == 'player1'
-      puts "Player 1 wins the round."
-    else
-      puts "#{player2_name} wins the round."
-    end
-    puts "Current scores: Player 1: #{@player1_score} | #{player2_name}: #{@player2_score}"
-  end
-
   def determine_game_winner
     @game_winner = GameWinner.new.call(@player1_score, @player2_score)
+  end
+
+  def announce_winner(player2_name, winner, session_type)
+    if winner == 'tie'
+      puts "This #{session_type} was a tie."
+    elsif winner == 'player1'
+      puts "Player 1 wins the #{session_type}."
+    else
+      puts "#{player2_name} wins the #{session_type}."
+    end
+    puts "Current scores: Player 1: #{@player1_score} | #{player2_name}: #{@player2_score}"
   end
 
   def award_points
@@ -69,16 +69,6 @@ class Game
       @player1_score += 1
     else
       @player2_score += 1
-    end
-  end
-
-  def announce_game_winner(player2_name)
-    if @game_winner == 'tie'
-      puts "This game is a tie."
-    elsif @game_winner == 'player1'
-      puts "Player 1 wins the game!"
-    else
-      puts "#{player2_name} wins the game!"
     end
   end
 
@@ -98,10 +88,10 @@ class Game
       puts "#{player2_name} chose: #{player2_choice}"
       determine_round_winner(player1_choice, player2_choice)
       award_points
-      announce_round_winner(player2_name)
+      announce_winner(player2_name, @round_winner, 'round')
     end
     determine_game_winner
-    announce_game_winner(player2_name)
+    announce_winner(player2_name, @game_winner, 'game')
   end
 
 end
