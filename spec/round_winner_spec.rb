@@ -14,6 +14,19 @@ describe RoundWinner do
       it { is_expected.to eq('tie') }
     end
 
+    describe 'when player 1s weapon is greater' do
+      let(:weapons) {
+        {
+          ['a', '1'] => 'player2'
+        }
+      }
+
+      let(:player1_weapon) { 'b' }
+      let(:player2_weapon) { '1' }
+
+      it { is_expected.to eq('player1') }
+    end
+
     describe 'when player 2s weapon is greater' do
       let(:weapons) {
         {
@@ -24,20 +37,6 @@ describe RoundWinner do
       let(:player2_weapon) { '1' }
 
       it('returns player2') { expect(subject).to eq('player2') }
-    end
-
-    describe 'when player 1s weapon is greater' do
-      let(:weapons) {
-        {
-          ['a', '1'] => 'player2'
-        }
-      }
-      it { is_expected.to eq('player1') }
-
-      let(:player1_weapon) { 'b' }
-      let(:player2_weapon) { '1' }
-
-      it { is_expected.to eq('player1') }
     end
   end
 end
