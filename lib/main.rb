@@ -25,9 +25,9 @@ class RPS
 
   def determine_type_of_game(player_count)
     if player_count == "1"
-      return 'one_player'
+      OnePlayer.new.play_game
     else player_count == "2"
-      return 'two_player'
+      TwoPlayer.new.play_game
     end
   end
 
@@ -48,12 +48,6 @@ end
 rps = RPS.new
 while rps.play_game
   rps.welcome_player
-  game_type = rps.determine_type_of_game(rps.request_player_count)
-  if game_type == 'one_player'
-    OnePlayer.new.play_game
-  else
-    TwoPlayer.new.play_game
-  end
-
+  rps.determine_type_of_game(rps.request_player_count)
   rps.play_game = rps.play_again?
 end
