@@ -26,7 +26,6 @@ describe Game do
 
       it 'a game winner' do
         expect(game.game_winner).to eq('')
-        # expect(game.instance_variable_get(:@round_winner)).to eq('')
       end
     end
   end #initialize
@@ -106,27 +105,28 @@ describe Game do
   end
 
   describe '#determine_game_winner' do
-    context "when player 1 and player 2 have the same score" do
-      it 'the game is a tie' do
-        game.player1_score = 1
-        game.player2_score = 1
-        expect(game.send(:determine_game_winner)).to eq('tie')
-      end
-    end
-    context "when player 1's score is higher than player 2's score" do
-      it 'player 1 wins the game' do
-        game.player1_score = 2
-        game.player2_score = 1
-        expect(game.send(:determine_game_winner)).to eq('player1')
-      end
-    end
-    context "when player 1's score is lower than player 2's score" do
-      it 'player 2 wins the game' do
-        game.player1_score = 1
-        game.player2_score = 2
-        expect(game.send(:determine_game_winner)).to eq('player2')
-      end
-    end
+    it 'needs to be written with mocks'
+    # context "when player 1 and player 2 have the same score" do
+    #   it 'the game is a tie' do
+    #     game.player1_score = 1
+    #     game.player2_score = 1
+    #     expect(game.send(:determine_game_winner)).to eq('tie')
+    #   end
+    # end
+    # context "when player 1's score is higher than player 2's score" do
+    #   it 'player 1 wins the game' do
+    #     game.player1_score = 2
+    #     game.player2_score = 1
+    #     expect(game.send(:determine_game_winner)).to eq('player1')
+    #   end
+    # end
+    # context "when player 1's score is lower than player 2's score" do
+    #   it 'player 2 wins the game' do
+    #     game.player1_score = 1
+    #     game.player2_score = 2
+    #     expect(game.send(:determine_game_winner)).to eq('player2')
+    #   end
+    # end
   end
 
   describe '#award_points' do

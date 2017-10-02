@@ -60,13 +60,7 @@ class Game
   end
 
   def determine_game_winner
-    if @player1_score == @player2_score
-      @game_winner = 'tie'
-    elsif @player1_score > @player2_score
-      @game_winner = 'player1'
-    else
-      @game_winner = 'player2'
-    end
+    @game_winner = GameWinner.new.call(@player1_score, @player2_score)
   end
 
   def award_points
