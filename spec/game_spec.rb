@@ -38,14 +38,6 @@ describe Game do
     it 'initiates a 2-player game??'
   end #play_two_player
 
-  describe '#computer_makes_choice' do
-    let(:acceptable_responses) {["1", "2", "3"]}
-    it 'returns a randomly selected weapon' do
-      computer_choice = game.send(:computer_makes_choice,acceptable_responses)
-      expect(acceptable_responses).to include(computer_choice)
-    end
-  end
-
   describe '#announce_round' do
     before do
       allow_any_instance_of(IO).to receive(:puts)
@@ -181,9 +173,21 @@ describe Game do
     end
   end
 
-
   describe '#play' do
     it 'initiates game play...???'
   end
 
 end #Game
+
+
+describe OnePlayer do
+  let(:one_player_game){OnePlayer.new}
+
+  describe '#computer_makes_choice' do
+    let(:acceptable_responses) {["1", "2", "3"]}
+    it 'returns a randomly selected weapon' do
+      computer_choice = one_player_game.send(:computer_makes_choice,acceptable_responses)
+      expect(acceptable_responses).to include(computer_choice)
+    end
+  end
+end #OnePlayer
