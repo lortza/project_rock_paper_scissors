@@ -1,6 +1,4 @@
 require 'cli'
-require 'weapons'
-
 
 describe CLI do
   include CLI

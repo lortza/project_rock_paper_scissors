@@ -29,7 +29,6 @@ class Game
 
   private
 
-
   def computer_makes_choice(weapons)
     weapons.sample
   end
