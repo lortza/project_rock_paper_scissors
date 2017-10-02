@@ -181,7 +181,26 @@ describe Game do
   end
 
   describe '#announce_game_winner' do
-    it 'puts the game winner in the console'
+    before do
+      allow_any_instance_of(IO).to receive(:puts)
+    end
+    context 'when the game is a tie' do
+      xit 'announces the game is a tie in the console' do
+        expect(game.send(:announce_game_winner, 'Jeff')).to eq('This game is a tie.')
+      end
+    end
+
+    context 'when player 1 wins' do
+      xit 'announces player 1 as the winner in the console' do
+        expect(game.send(:announce_game_winner, 'Player 2')).to eq('Player 1 wins the game!')
+      end
+    end
+
+    context 'when player 2 wins' do
+      xit 'announces player 2 as the winner in the console' do
+        expect(game.send(:announce_game_winner, 'Player 2')).to eq('Player 2 wins the game!')
+      end
+    end
   end
 
   describe '#play' do
