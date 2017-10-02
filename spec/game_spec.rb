@@ -63,41 +63,41 @@ describe Game do
 
   describe '#determine_round_winner' do
     it 'needs to be rewritten with mocks'
-    context 'when players 1 & 2 have the same weapon' do
-      it "the round is a 'tie'" do
-        expect(game.send(:determine_round_winner, 1, 1)).to eq('tie')
-      end
-    end
-    context "when player 1 is 'r' and player 2 is 'p'" do
-      it 'player 2 wins' do
-        expect(game.send(:determine_round_winner, 'r', 'p')).to eq('player2')
-      end
-    end
-    context "when player 1 is 'p' and player 2 is 's'" do
-      it 'player 2 wins' do
-        expect(game.send(:determine_round_winner, 'p', 's')).to eq('player2')
-      end
-    end
-    context "when player 1 is 's' and player 2 is 'r'" do
-      it 'player 2 wins' do
-        expect(game.send(:determine_round_winner, 's', 'r')).to eq('player2')
-      end
-    end
-    context "when player 2 is 'p' and player 2 is 'r'" do
-      it 'player 1 wins' do
-        expect(game.send(:determine_round_winner, 'p', 'r')).to eq('player1')
-      end
-    end
-    context "when player 2 is 's' and player 2 is 'p'" do
-      it 'player 1 wins' do
-        expect(game.send(:determine_round_winner, 's', 'p')).to eq('player1')
-      end
-    end
-    context "when player 2 is 'r' and player 2 is 's'" do
-      it 'player 1 wins' do
-        expect(game.send(:determine_round_winner, 'r', 's')).to eq('player1')
-      end
-    end
+    # context 'when players 1 & 2 have the same weapon' do
+    #   it "the round is a 'tie'" do
+    #     expect(game.send(:determine_round_winner, 1, 1)).to eq('tie')
+    #   end
+    # end
+    # context "when player 1 is 'r' and player 2 is 'p'" do
+    #   it 'player 2 wins' do
+    #     expect(game.send(:determine_round_winner, 'r', 'p')).to eq('player2')
+    #   end
+    # end
+    # context "when player 1 is 'p' and player 2 is 's'" do
+    #   it 'player 2 wins' do
+    #     expect(game.send(:determine_round_winner, 'p', 's')).to eq('player2')
+    #   end
+    # end
+    # context "when player 1 is 's' and player 2 is 'r'" do
+    #   it 'player 2 wins' do
+    #     expect(game.send(:determine_round_winner, 's', 'r')).to eq('player2')
+    #   end
+    # end
+    # context "when player 2 is 'p' and player 2 is 'r'" do
+    #   it 'player 1 wins' do
+    #     expect(game.send(:determine_round_winner, 'p', 'r')).to eq('player1')
+    #   end
+    # end
+    # context "when player 2 is 's' and player 2 is 'p'" do
+    #   it 'player 1 wins' do
+    #     expect(game.send(:determine_round_winner, 's', 'p')).to eq('player1')
+    #   end
+    # end
+    # context "when player 2 is 'r' and player 2 is 's'" do
+    #   it 'player 1 wins' do
+    #     expect(game.send(:determine_round_winner, 'r', 's')).to eq('player1')
+    #   end
+    # end
   end
 
   describe '#announce_round_winner' do
