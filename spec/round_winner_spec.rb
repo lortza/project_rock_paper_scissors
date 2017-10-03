@@ -1,4 +1,4 @@
-require 'round_winner'
+require 'winner'
 
 describe RoundWinner do
   describe '#call' do

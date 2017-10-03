@@ -1,11 +1,11 @@
 require_relative 'cli'
 require_relative 'weapons'
-require_relative 'round_winner'
-require_relative 'game_winner'
+require_relative 'winner'
 
 class Game
   include CLI
   include Weapons
+  include WinnerFactory
 
   attr_accessor :player1_score, :player2_score, :round_winner, :game_winner, :round_number
 
@@ -40,17 +40,6 @@ class Game
     end
   end
 
-  def announce_winner(player2_name, winner, session_type)
-    if winner == 'tie'
-      puts "This #{session_type} was a tie."
-    elsif winner == 'player1'
-      puts "Player 1 wins the #{session_type}."
-    else
-      puts "#{player2_name} wins the #{session_type}."
-    end
-    puts "Current scores: Player 1: #{@player1_score} | #{player2_name}: #{@player2_score}"
-  end
-
   def award_points
     if @round_winner == 'tie'
     elsif @round_winner == 'player1'
@@ -58,6 +47,10 @@ class Game
     else
       @player2_score += 1
     end
+  end
+
+  def display_score(player2_name)
+    puts "Current scores: Player 1: #{@player1_score} | #{player2_name}: #{@player2_score}"
   end
 
   def clear_screen
@@ -76,10 +69,12 @@ class Game
       puts "#{player2_name} chose: #{player2_choice}"
       determine_winner(player1_choice, player2_choice, 'round')
       award_points
-      announce_winner(player2_name, @round_winner, 'round')
+      WinnerFactory.announce_winner(player2_name, @round_winner, 'round')
+      display_score(player2_name)
     end
     determine_winner(@player1_score, @player2_score, 'game')
-    announce_winner(player2_name, @game_winner, 'game')
+    WinnerFactory.announce_winner(player2_name, @game_winner, 'game')
+    display_score(player2_name)
   end
 
 end

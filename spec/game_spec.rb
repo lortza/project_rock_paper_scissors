@@ -53,7 +53,7 @@ describe Game do
     it 'calls methods that are already tested'
   end
 
-  describe '#determine_round_winner' do
+  describe '#determine_winner' do
     it 'needs to be rewritten with mocks'
     # context 'when players 1 & 2 have the same weapon' do
     #   it "the round is a 'tie'" do
@@ -90,14 +90,7 @@ describe Game do
     #     expect(game.send(:determine_round_winner, 'r', 's')).to eq('player1')
     #   end
     # end
-  end
 
-  describe '#announce_winner' do
-    it 'outputs the winner to the console'
-  end
-
-  describe '#determine_game_winner' do
-    it 'needs to be written with mocks'
     # context "when player 1 and player 2 have the same score" do
     #   it 'the game is a tie' do
     #     game.player1_score = 1
@@ -183,6 +176,10 @@ end #Game
 describe OnePlayer do
   let(:one_player_game){OnePlayer.new}
 
+  describe '#play_game' do
+    it 'initiates a one-player game'
+  end
+
   describe '#computer_makes_choice' do
     let(:acceptable_responses) {["1", "2", "3"]}
     it 'returns a randomly selected weapon' do
@@ -191,3 +188,12 @@ describe OnePlayer do
     end
   end
 end #OnePlayer
+
+describe TwoPlayer do
+  let(:two_player_game){TwoPlayer.new}
+
+  describe '#play_game' do
+    it 'initiates a two-player game'
+  end
+
+end #TwoPlayer

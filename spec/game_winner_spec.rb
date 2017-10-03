@@ -1,4 +1,4 @@
-require 'game_winner'
+require 'winner'
 
 describe GameWinner do
 
