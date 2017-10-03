@@ -25,9 +25,9 @@ class RPS
 
   def determine_type_of_game(player_count)
     if player_count == "1"
-      OnePlayer.new.play_game
+      OnePlayerGame.new.play
     else player_count == "2"
-      TwoPlayer.new.play_game
+      TwoPlayerGame.new.play
     end
   end
 
