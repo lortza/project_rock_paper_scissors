@@ -1,7 +1,11 @@
 require 'game'
+require 'winner'
+require 'weapons'
 
 
 describe Game do
+  include Weapons
+
 
   let(:game){Game.new}
 
@@ -29,14 +33,6 @@ describe Game do
       end
     end
   end #initialize
-
-  describe '#play_one_player' do
-    it 'initiates a 1-player game??'
-  end #play_one_player
-
-  describe '#play_two_player' do
-    it 'initiates a 2-player game??'
-  end #play_two_player
 
   describe '#announce_round' do
     before do
@@ -166,18 +162,30 @@ describe Game do
     end
   end
 
-  describe '#play' do
+  describe '#display_score' do
+    it 'displays the score'
+  end
+
+  describe '#play_rounds' do
+    it 'displays the score'
+  end
+
+  describe '#play_game' do
     it 'initiates game play...???'
   end
 
 end #Game
 
 
-describe OnePlayer do
-  let(:one_player_game){OnePlayer.new}
+describe OnePlayerGame do
+  let(:one_player_game){ OnePlayerGame.new }
+  let(:rounds) { 3 }
 
-  describe '#play_game' do
-    it 'initiates a one-player game'
+  describe '#play' do
+    it 'initiates a one-player game' do
+      expect(one_player_game).to receive(:play_game).with(rounds: rounds, player2_name: "The Computer", weapon_selection_proc: Proc.new { 'placeholder' })
+      one_player_game.play
+    end
   end
 
   describe '#computer_makes_choice' do
@@ -189,11 +197,15 @@ describe OnePlayer do
   end
 end #OnePlayer
 
-describe TwoPlayer do
-  let(:two_player_game){TwoPlayer.new}
+describe TwoPlayerGame do
+  let(:two_player_game){ TwoPlayerGame.new }
+  let(:rounds) { 3 }
 
-  describe '#play_game' do
-    it 'initiates a two-player game'
+  describe '#play' do
+    it 'initiates a two-player game' do
+      expect(two_player_game).to receive(:play_game).with(rounds: rounds, player2_name: "Player 2", weapon_selection_proc: Proc.new { 'placeholder' })
+      two_player_game.play
+    end
   end
 
 end #TwoPlayer
