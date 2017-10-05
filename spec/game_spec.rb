@@ -50,64 +50,27 @@ describe Game do
   end
 
   describe '#determine_winner' do
-    it 'needs to be rewritten with mocks'
-    # context 'when players 1 & 2 have the same weapon' do
-    #   it "the round is a 'tie'" do
-    #     expect(game.send(:determine_round_winner, 1, 1)).to eq('tie')
-    #   end
-    # end
-    # context "when player 1 is 'r' and player 2 is 'p'" do
-    #   it 'player 2 wins' do
-    #     expect(game.send(:determine_round_winner, 'r', 'p')).to eq('player2')
-    #   end
-    # end
-    # context "when player 1 is 'p' and player 2 is 's'" do
-    #   it 'player 2 wins' do
-    #     expect(game.send(:determine_round_winner, 'p', 's')).to eq('player2')
-    #   end
-    # end
-    # context "when player 1 is 's' and player 2 is 'r'" do
-    #   it 'player 2 wins' do
-    #     expect(game.send(:determine_round_winner, 's', 'r')).to eq('player2')
-    #   end
-    # end
-    # context "when player 2 is 'p' and player 2 is 'r'" do
-    #   it 'player 1 wins' do
-    #     expect(game.send(:determine_round_winner, 'p', 'r')).to eq('player1')
-    #   end
-    # end
-    # context "when player 2 is 's' and player 2 is 'p'" do
-    #   it 'player 1 wins' do
-    #     expect(game.send(:determine_round_winner, 's', 'p')).to eq('player1')
-    #   end
-    # end
-    # context "when player 2 is 'r' and player 2 is 's'" do
-    #   it 'player 1 wins' do
-    #     expect(game.send(:determine_round_winner, 'r', 's')).to eq('player1')
-    #   end
-    # end
+    describe 'for each round' do
+      let(:weapons_score) {
+        { ['a', '1'] => 'player2' }
+      }
 
-    # context "when player 1 and player 2 have the same score" do
-    #   it 'the game is a tie' do
-    #     game.player1_score = 1
-    #     game.player2_score = 1
-    #     expect(game.send(:determine_game_winner)).to eq('tie')
-    #   end
-    # end
-    # context "when player 1's score is higher than player 2's score" do
-    #   it 'player 1 wins the game' do
-    #     game.player1_score = 2
-    #     game.player2_score = 1
-    #     expect(game.send(:determine_game_winner)).to eq('player1')
-    #   end
-    # end
-    # context "when player 1's score is lower than player 2's score" do
-    #   it 'player 2 wins the game' do
-    #     game.player1_score = 1
-    #     game.player2_score = 2
-    #     expect(game.send(:determine_game_winner)).to eq('player2')
-    #   end
-    # end
+      let(:round_winner) { RoundWinner.new(weapons_score) }
+
+      xit 'return the winner of the round' do
+        # expect(round_winner).to receive(:call).with('a', 'a')
+        # game.send(:determine_winner,'a', '1', 'round')
+        allow(round_winner).to receive(:call).with('a', 'a').and_return('tie')
+      end
+    end
+
+    describe 'for each game' do
+      let(:game_winner) { GameWinner.new }
+
+      xit 'return the winner of the game' do
+        allow(game_winner).to receive(:call).with(1, 1).and_return('tie')
+      end
+    end
   end
 
   describe '#award_points' do
