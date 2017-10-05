@@ -126,11 +126,17 @@ describe Game do
   end
 
   describe '#display_score' do
-    it 'displays the score'
+    before do
+      allow_any_instance_of(IO).to receive(:puts)
+    end
+    let(:player2_name) { "Player 2" }
+    xit 'displays the score' do
+      game.send(:display_score, player2_name)
+    end
   end
 
   describe '#play_rounds' do
-    it 'displays the score'
+    it 'initiates a round'
   end
 
   describe '#play_game' do
